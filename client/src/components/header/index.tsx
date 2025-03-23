@@ -16,6 +16,18 @@ export const Header: React.FC = () => {
           </CustomButton>
         </Link>
       </Space>
+      <Space>
+        <Link to={Paths.registration}>
+          <CustomButton type="link">
+            <Typography.Title level={5}>Registration</Typography.Title>
+          </CustomButton>
+        </Link>
+        <Link to={Paths.login}>
+          <CustomButton type="link">
+            <Typography.Title level={5}>Login</Typography.Title>
+          </CustomButton>
+        </Link>
+      </Space>
     </Layout.Header>
   );
 };
