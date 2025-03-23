@@ -4,6 +4,6 @@ export const Paths = {
   employeesEdit: '/employees/edit',
   employees: '/employees',
   status: '/status',
-  login: 'login',
-  registration: 'registration',
+  login: '/login',
+  registration: '/registration',
 } as const;
