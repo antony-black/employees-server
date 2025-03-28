@@ -41,8 +41,8 @@ class UsersService {
       },
     });
     const isPasswordsEqualed = await bcrypt.compare(password, user.password);
-    console.log("isPasswordsEqualed >>>>", isPasswordsEqualed);
-    
+    console.log('isPasswordsEqualed >>>>', isPasswordsEqualed);
+
     if (!user || !isPasswordsEqualed) {
       throw new Error('Wrong email or password.');
     }
@@ -59,12 +59,11 @@ class UsersService {
 
   async logout(refreshToken) {
     // const token = TokenService.remove(refreshToken);
-
     // return token;
   }
 
   async getCurrent(req, res) {
-    return res.status(200).json(req.user)
+    res.status(200).json(req.user);
   }
 }
 

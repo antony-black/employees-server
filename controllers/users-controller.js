@@ -57,9 +57,7 @@ class UsersController {
 
   async getCurrent(req, res) {
     try {
-      const userData = await UsersService.getCurrent(req, res);
-
-      res.json(userData);
+      await UsersService.getCurrent(req, res);
     } catch (error) {
       console.error('UserController/getCurrent: ', error);
     }

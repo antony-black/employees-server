@@ -28,7 +28,7 @@ module.exports = async function(req, res, next) {
       where: {
         id: userData.id
       }
-    })
+    });
 
     req.user = user;
 
