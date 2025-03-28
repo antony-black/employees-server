@@ -10,12 +10,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL,
-  }),
-);
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.CLIENT_URL,
+//   }),
+// );
+app.use(cors());
 app.use('/api/users', require("./routers/users-router"));
 app.use('/api/employees', require("./routers/employees-router"));
 
