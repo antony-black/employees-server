@@ -29,11 +29,7 @@ export const Employee = () => {
   }
 
   const handleShowModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(!isModalOpen);
   };
 
   const handleRemoveEmployee = async () => {
@@ -83,7 +79,7 @@ export const Employee = () => {
         title="Would you like to delete this employee?"
         open={isModalOpen}
         onOk={handleRemoveEmployee}
-        onCancel={handleCloseModal}
+        onCancel={handleShowModal}
         okText="Yes"
         cancelText="No"></Modal>
     </Layout>

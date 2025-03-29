@@ -39,7 +39,7 @@ class EmployeesController {
   async edit(req, res, next) {
     try {
       const data = req.body;
-      // const id = data.id;
+
       const {id }= req.params;
 
      const employee = await EmployeesService.edit(data, id);
@@ -52,7 +52,6 @@ class EmployeesController {
 
   async remove(req, res, next) {
     try {
-      // const { id } = req.body;
       const {id }= req.params;
 
       const employee = await EmployeesService.remove(id);
