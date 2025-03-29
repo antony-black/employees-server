@@ -1,5 +1,5 @@
 import { createListenerMiddleware } from "@reduxjs/toolkit";
-import { authApi } from "../app/auth";
+import { authApi } from "../app/services/auth";
 
 export const listenerMiddleware = createListenerMiddleware();
 
@@ -9,10 +9,8 @@ listenerMiddleware.startListening({
     listtenerApi.cancelActiveListeners();
 
     const token = action.payload.accessToken;
-console.log('1',action);
 
     if (token) {
-      console.log('2',action);
       localStorage.setItem('token', token);
     }
   }

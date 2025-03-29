@@ -41,7 +41,7 @@ class EmployeesService {
     });
 
     if (!existingEmployee) {
-      throw new Error(`Employee with id ${id} not found.`);
+      throw new Error(`Employee with not found.`);
     }
 
     return await prisma.employee.delete({

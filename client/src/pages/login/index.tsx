@@ -8,36 +8,30 @@ import { PasswordInput } from '../../components/password-input';
 import { CustomButton } from '../../components/custom-button';
 import { Paths } from '../../paths';
 import { useAppSelector } from '../../app/hooks';
-import { selectUser } from '../../features/auth/authSlice';
-import { TUserData, useLoginMutation } from '../../app/auth';
-import { isErrorWithMessage } from '../../utils/is-error-with-message';
+import { selectIsAuthenticated } from '../../features/auth/authSlice';
+import { TUserData, useLoginMutation } from '../../app/services/auth';
+import { catchError } from '../../utils/error-util';
 import { ErrorMessage } from '../../components/error-message';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
-  const user = useAppSelector(selectUser);
-  const [error, setError] = useState('');
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const [error, setError] = useState<string>('');
   const [loginUser, loginUserResult] = useLoginMutation();
 
   useEffect(() => {
-    if (user) {
-      navigate('/');
+    if (isAuthenticated) {
+      navigate(Paths.home);
     }
-  }, [user, navigate]);
+  }, [isAuthenticated, navigate]);
 
-  const login = async (data: TUserData) => {
+  const login = async (userData: TUserData) => {
     try {
-      await loginUser(data).unwrap();
+      await loginUser(userData).unwrap();
 
-      navigate('/');
+      navigate(Paths.home);
     } catch (error) {
-      const isErorHasMessage = isErrorWithMessage(error);
-
-      if (isErorHasMessage) {
-        setError(error.data.message);
-      } else {
-        setError("Unknown error.");
-      }
+      catchError(error, setError);
     }
   };
 
@@ -48,7 +42,7 @@ export const Login: React.FC = () => {
           <Form onFinish={login}>
             <CustomInput type="email" name="email" placeholder="email" />
             <PasswordInput name="password" placeholder="password" />
-            <CustomButton type="primary" htmlType="submit">
+            <CustomButton type="primary" htmlType="submit" loading={loginUserResult.isLoading}>
               Login
             </CustomButton>
           </Form>
@@ -56,7 +50,7 @@ export const Login: React.FC = () => {
             <Typography.Text>
               Still have not registration? <Link to={Paths.registration}>Get registration</Link>
             </Typography.Text>
-            <ErrorMessage message={error}/>
+            <ErrorMessage message={error} />
           </Space>
         </Card>
       </Row>

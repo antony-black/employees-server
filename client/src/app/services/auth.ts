@@ -1,5 +1,5 @@
 import { User } from '@prisma/client';
-import { api } from './services/api';
+import { api } from './api';
 
 export type TUserData = Omit<User, 'id'>;
 type TResponseData = User & { accessToken: string };

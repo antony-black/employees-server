@@ -9,11 +9,16 @@ import { Login } from './pages/login';
 import { Registration } from './pages/registration';
 import { ConfigProvider, theme } from 'antd';
 import { Auth } from './features/auth/auth';
+import { Employees } from './pages/employees';
+import { AddEmployee } from './pages/add-employee';
+import { Status } from './pages/status';
+import { Employee } from './pages/employee';
+import { EditEmployee } from './pages/edit-employee';
 
 const router = createBrowserRouter([
   {
     path: Paths.home,
-    element: <h1>Employees</h1>,
+    element: <Employees/>,
   },
   {
     path: Paths.login,
@@ -22,6 +27,22 @@ const router = createBrowserRouter([
   {
     path: Paths.registration,
     element: <Registration />,
+  },
+  {
+    path: Paths.employeesAdd,
+    element: <AddEmployee />,
+  },
+  {
+    path: `${Paths.status}/:status`,
+    element: <Status />,
+  },
+  {
+    path: `${Paths.employees}/:id`,
+    element: <Employee />,
+  },
+  {
+    path: `${Paths.employeesEdit}/:id`,
+    element: <EditEmployee />,
   },
 ]);
 
@@ -35,7 +56,6 @@ root.render(
         theme={{
           algorithm: theme.darkAlgorithm,
         }}>
-          {/* //TODO:doesn't work properly. Should be fixed */}
         <Auth>
           <RouterProvider router={router} />
         </Auth>

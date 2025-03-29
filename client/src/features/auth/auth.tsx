@@ -1,4 +1,4 @@
-import { useCurrentUserQuery } from '../../app/auth';
+import { useCurrentUserQuery } from '../../app/services/auth';
 
 export const Auth = ({ children }: { children: JSX.Element }) => {
   const { isLoading } = useCurrentUserQuery();
