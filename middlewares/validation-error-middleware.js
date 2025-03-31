@@ -8,4 +8,6 @@ module.exports = (req, res, next) => {
   if (!errors.isEmpty()) {
     return next(ApiError.BadRequest('Validation error!', errors.array()));
   }
+  
+  next();
 };
