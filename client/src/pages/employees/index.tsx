@@ -1,10 +1,9 @@
-import Table, { ColumnsType } from 'antd/es/table';
-import { Layout } from '../../components/layout';
-import { Employee } from '@prisma/client';
 import { useNavigate } from 'react-router-dom';
-import { useGetAllEmployeesQuery } from '../../app/services/employees';
-import { CustomButton } from '../../components/custom-button';
+import Table, { ColumnsType } from 'antd/es/table';
 import { PlusCircleOutlined } from '@ant-design/icons';
+import { Employee } from '@prisma/client';
+import { useGetAllEmployeesQuery } from '../../app/services/employees';
+import { Layout, CustomButton } from '../../components';
 import { Paths } from '../../paths';
 
 const columns: ColumnsType<Employee> = [

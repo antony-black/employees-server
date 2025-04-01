@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Row, Card, Space, Typography } from 'antd';
-import { Layout } from '../../components/layout';
-import { CustomButton } from '../../components/custom-button';
-import { CustomInput } from '../../components/custom-input';
-import { PasswordInput } from '../../components/password-input';
-import { Paths } from '../../paths';
 import { useAppSelector } from '../../app/hooks';
 import { selectUser } from '../../features/auth/authSlice';
 import { TUserData, useRegistrationMutation } from '../../app/services/auth';
 import { catchError } from '../../utils/error-util';
-import { ErrorMessage } from '../../components/error-message';
+import {
+  Layout,
+  CustomButton,
+  CustomInput,
+  PasswordInput,
+  ErrorMessage,
+} from '../../components';
+import { Paths } from '../../paths';
 
 export const Registration: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ export const Registration: React.FC = () => {
     if (user) {
       navigate(Paths.login);
     }
-  },[user, navigate]);
+  }, [user, navigate]);
 
   const registration = async (userData: TUserData) => {
     await getUserRegistration(userData).unwrap();
@@ -51,7 +53,7 @@ export const Registration: React.FC = () => {
             <Typography.Text>
               Have got already registration? <Link to={Paths.login}>Login</Link>
             </Typography.Text>
-            <ErrorMessage message={error}/>
+            <ErrorMessage message={error} />
           </Space>
         </Card>
       </Row>

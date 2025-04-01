@@ -1,18 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Layout, Space, Typography } from 'antd';
 import { LogoutOutlined, TeamOutlined } from '@ant-design/icons';
-import styles from './header.module.css';
-import { CustomButton } from '../custom-button';
 import { Paths } from '../../paths';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectIsAuthenticated } from '../../features/auth/authSlice';
 import { logout } from '../../features/auth/authSlice';
-import { useDispatch } from 'react-redux';
+import { CustomButton } from '../../components';
+import styles from './header.module.css';
 
 export const Header: React.FC = () => {
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
-  // const dispatch = useAppDispatch();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {

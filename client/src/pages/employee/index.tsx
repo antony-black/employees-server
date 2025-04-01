@@ -1,15 +1,13 @@
-import { Descriptions, Divider, Modal, Space } from 'antd';
-import { Layout } from '../../components/layout';
-import { useGetSingleEmployeeQuery, useRemoveEmployeeMutation } from '../../app/services/employees';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { ErrorMessage } from '../../components/error-message';
 import { useState } from 'react';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Descriptions, Divider, Modal, Space } from 'antd';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { useGetSingleEmployeeQuery, useRemoveEmployeeMutation } from '../../app/services/employees';
 import { Paths } from '../../paths';
 import { catchError } from '../../utils/error-util';
 import { useAppSelector } from '../../app/hooks';
 import { selectUser } from '../../features/auth/authSlice';
-import { CustomButton } from '../../components/custom-button';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { Layout, CustomButton, ErrorMessage } from '../../components';
 
 export const Employee = () => {
   const navigate = useNavigate();

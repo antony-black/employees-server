@@ -1,14 +1,13 @@
-import { Row } from 'antd';
-import { Layout } from '../../components/layout';
-import { EmployeeForm } from '../../components/employee-form';
-import { useAddEmployeeMutation } from '../../app/services/employees';
-import { Employee } from '@prisma/client';
-import { catchError } from '../../utils/error-util';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Paths } from '../../paths';
+import { Row } from 'antd';
+import { Employee } from '@prisma/client';
+import { useAddEmployeeMutation } from '../../app/services/employees';
+import { catchError } from '../../utils/error-util';
 import { useAppSelector } from '../../app/hooks';
 import { selectIsAuthenticated } from '../../features/auth/authSlice';
+import { Layout, EmployeeForm } from '../../components';
+import { Paths } from '../../paths';
 
 export const AddEmployee: React.FC = () => {
   const navigate = useNavigate();

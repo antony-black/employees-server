@@ -7,8 +7,6 @@ const authMiddleware = require('../middlewares/auth-middleware');
 const { registrationValidation, loginValidation } = require('../validations/auth-validation');
 const validationErrorMiddleware = require('../middlewares/validation-error-middleware');
 
-// TODO: add validation middleware
-
 router.post(
   '/registration',
   registrationValidation,

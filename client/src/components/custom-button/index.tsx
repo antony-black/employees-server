@@ -10,7 +10,7 @@ type TCustomButton = {
   loading?: boolean;
   onClick?: () => void;
 }
-
+// TODO: add lazy loading for invisible components
 export const CustomButton: React.FC<TCustomButton> = ({
   children,
   icon,

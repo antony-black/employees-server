@@ -2,16 +2,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Card, Form, Row, Space, Typography } from 'antd';
-import { Layout } from '../../components/layout';
-import { CustomInput } from '../../components/custom-input';
-import { PasswordInput } from '../../components/password-input';
-import { CustomButton } from '../../components/custom-button';
-import { Paths } from '../../paths';
 import { useAppSelector } from '../../app/hooks';
 import { selectIsAuthenticated } from '../../features/auth/authSlice';
 import { TUserData, useLoginMutation } from '../../app/services/auth';
 import { catchError } from '../../utils/error-util';
-import { ErrorMessage } from '../../components/error-message';
+import { Layout, CustomButton, CustomInput, PasswordInput, ErrorMessage } from '../../components';
+import { Paths } from '../../paths';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();

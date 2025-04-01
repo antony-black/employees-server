@@ -1,8 +1,8 @@
-import { Result, Row } from 'antd';
-import { CustomButton } from '../custom-button';
 import { Link, useParams } from 'react-router-dom';
+import { Result, Row } from 'antd';
+import { CustomButton } from '../../components';
 import { Paths } from '../../paths';
-import { Statuses } from '../statuses';
+import { Statuses } from '../../statuses';
 
 export const Status: React.FC = () => {
   const {status} = useParams();
