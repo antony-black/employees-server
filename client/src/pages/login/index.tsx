@@ -9,7 +9,7 @@ import { catchError } from '../../utils/error-util';
 import { Layout, CustomButton, CustomInput, PasswordInput, ErrorMessage } from '../../components';
 import { Paths } from '../../paths';
 
-export const Login: React.FC = () => {
+const Login: React.FC = () => {
   const navigate = useNavigate();
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const [error, setError] = useState<string>('');
@@ -53,3 +53,4 @@ export const Login: React.FC = () => {
     </Layout>
   );
 };
+export default Login;

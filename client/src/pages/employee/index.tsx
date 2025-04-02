@@ -9,7 +9,7 @@ import { useAppSelector } from '../../app/hooks';
 import { selectUser } from '../../features/auth/authSlice';
 import { Layout, CustomButton, ErrorMessage } from '../../components';
 
-export const Employee = () => {
+const Employee = () => {
   const navigate = useNavigate();
   const user = useAppSelector(selectUser);
   const params = useParams<{ id: string }>();
@@ -83,3 +83,5 @@ export const Employee = () => {
     </Layout>
   );
 };
+
+export default Employee;

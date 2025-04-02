@@ -24,7 +24,7 @@ const columns: ColumnsType<Employee> = [
   },
 ];
 
-export const Employees: React.FC = () => {
+const Employees: React.FC = () => {
   const navigate = useNavigate();
   const { data, isLoading } = useGetAllEmployeesQuery();
 
@@ -50,3 +50,5 @@ export const Employees: React.FC = () => {
     </Layout>
   );
 };
+
+export default Employees;

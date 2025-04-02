@@ -9,7 +9,7 @@ import { selectIsAuthenticated } from '../../features/auth/authSlice';
 import { Layout, EmployeeForm } from '../../components';
 import { Paths } from '../../paths';
 
-export const AddEmployee: React.FC = () => {
+const AddEmployee: React.FC = () => {
   const navigate = useNavigate();
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const [addEmployee] = useAddEmployeeMutation();
@@ -44,3 +44,5 @@ export const AddEmployee: React.FC = () => {
     </Layout>
   );
 };
+
+export default AddEmployee;

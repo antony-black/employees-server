@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { store } from './app/store';
-import './index.css';
-import { Paths } from './paths';
-import { Login } from './pages/login';
-import { Registration } from './pages/registration';
 import { ConfigProvider, theme } from 'antd';
+import { store } from './app/store';
 import { Auth } from './features/auth/auth';
-import { Employees } from './pages/employees';
-import { AddEmployee } from './pages/add-employee';
-import { Status } from './pages/status';
-import { Employee } from './pages/employee';
-import { EditEmployee } from './pages/edit-employee';
+import { Paths } from './paths';
+import './index.css';
+
+const Login = React.lazy(() => import(/* webpackChunkName: "Login" */ './pages/login'));
+const Registration = React.lazy(
+  () => import(/* webpackChunkName: "Registration" */ './pages/registration'),
+);
+const Employees = React.lazy(() => import(/* webpackChunkName: "Employees" */ './pages/employees'));
+const AddEmployee = React.lazy(
+  () => import(/* webpackChunkName: "AddEmployee" */ './pages/add-employee'),
+);
+const EditEmployee = React.lazy(
+  () => import(/* webpackChunkName: "EditEmployee" */ './pages/edit-employee'),
+);
+const Employee = React.lazy(() => import(/* webpackChunkName: "Employee" */ './pages/employee'));
+const Status = React.lazy(() => import(/* webpackChunkName: "Status" */ './pages/status'));
 
 const router = createBrowserRouter([
   {
     path: Paths.home,
-    element: <Employees/>,
+    element: <Employees />,
   },
   {
     path: Paths.login,
@@ -57,7 +64,9 @@ root.render(
           algorithm: theme.darkAlgorithm,
         }}>
         <Auth>
-          <RouterProvider router={router} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <RouterProvider router={router} />
+          </Suspense>
         </Auth>
       </ConfigProvider>
     </Provider>

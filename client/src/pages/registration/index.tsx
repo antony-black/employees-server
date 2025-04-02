@@ -14,7 +14,7 @@ import {
 } from '../../components';
 import { Paths } from '../../paths';
 
-export const Registration: React.FC = () => {
+const Registration: React.FC = () => {
   const navigate = useNavigate();
   const user = useAppSelector(selectUser);
   const [error, setError] = useState<string>('');
@@ -60,3 +60,5 @@ export const Registration: React.FC = () => {
     </Layout>
   );
 };
+
+export default Registration;

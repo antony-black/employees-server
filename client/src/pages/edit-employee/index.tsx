@@ -7,7 +7,7 @@ import { catchError } from '../../utils/error-util';
 import { Layout, EmployeeForm } from '../../components';
 import { Paths } from '../../paths';
 
-export const EditEmployee = () => {
+const EditEmployee = () => {
   const navigate = useNavigate();
   const params = useParams<{ id: string }>();
   const { data, isLoading } = useGetSingleEmployeeQuery(params.id || '');
@@ -47,3 +47,5 @@ export const EditEmployee = () => {
     </Layout>
   );
 };
+
+export default EditEmployee;
